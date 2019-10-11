@@ -1,0 +1,9 @@
+.sidebar {
+  width: 300px;
+}
+
+@media screen and (orientation: landscape) {
+  .sidebar {
+    width: 500px;
+  }
+}
