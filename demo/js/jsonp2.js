@@ -13,11 +13,22 @@
       let CALL_BACK = options.jsonp || 'callback';
       let FN_NAME = options.jsonpCallback || `JOSNP${new Date().getTime()}`;
       SCRIPT.src = `${url}${url.indexOf('?') >= 0 ? '&' : '?'}${CALL_BACK}=${FN_NAME}&_=${new Date().getTime()}`;
+
+      //设定延迟时间
+      let TIME_OUT = options.timeout || 3000,
+        DELAY_TIMER = null;//=>监听器
+      //=>发送请求后立即监听响应时间，如果超过响应时间还没有执行全局函数，则是失败的请求
+      DELAY_TIMER = setTimeout(() => {
+        reject('JSONP请求失败！');
+      }, TIME_OUT);
+
+
       //=>成功或失败后执行的函数
       window[FN_NAME] = function (result) {
 
         document.removeChild(SCRIPT);
         window[FN_NAME] = null;
+        clearTimeout(DELAY_TIMER);
         resolve(result);
       };
     });
