@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   res.send('nihao');
 });
 app.get('/queryInfo', (req, res) => {
-  let fn = req.query.cb,
+  let fn = req.query.callback,
     data = {
       code: 0,
       msg: 'my name is jinxiyan'

@@ -28,6 +28,11 @@
         }
     });
 </script> -->
-<script src="./js/jsonp.js"></script>
+<script src="./js/jsonp2.js"></script>
+<script>
+    jsonp('http://127.0.0.1:6060/queryInfo').then(result => {
+        console.log(result);
+    });
+</script>
 
 </html>
