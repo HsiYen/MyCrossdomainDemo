@@ -11,13 +11,21 @@
     let FN_NAME = `JOSNP${new Date().getTime()}`;//=>生成随机函数名
     FN_NAME = options.jsonpCallback || FN_NAME;
     window[FN_NAME] = function (result) {
-      console.log(result);
+      //=>数据获取成功 移除SCRIPT标签和创建全局函数
+      document.removeChild(SCRIPT);
+      window[FN_NAME] = null;
+
+      //=>执行resolve
+
     };//=> 生成一个全局函数（一定要挂载到全局）
     let CALL_BACK = options.jsonp || 'callback';
-    let _default = {
-      jsonp: 'callback',
-      jsonpCallback: FN_NAME
-    };
+    //=>发送jsonp请求
+    //=> 加一个‘${new Date().getTime()}’主要是清除缓存
+    SCRIPT.src = `${url}${url.indexOf('?') >= 0 ? '&' : '?'}${CALL_BACK}=${FN_NAME}&_=${new Date().getTime()}`;
+    // let _default = {
+    //   jsonp: CALL_BACK,
+    //   jsonpCallback: FN_NAME
+    // };
 
     return new Promise((resolve, reject) => {
       if (typeof url === 'undefined') {
@@ -44,3 +52,5 @@
 
 })(typeof window === 'undefined' ? global : window);
 //=> window是浏览器环境下，global是Node环境下
+
+//l来自bilibili教程https://www.bilibili.com/video/av65629949/?p=3
