@@ -2,4 +2,65 @@
   width: 300px
   @media screen and ( orientation: landscape)
     .sidebar
-    width: 500px
+      width: 500px
+
+$nav-color: #F90
+nav
+  $width: 100px
+  width: $width/4
+  color: $nav-color
+  div
+    width: $width
+
+.DIV
+  $height: 1000px
+  $width: 1000px
+  height: $height
+  width: $width
+  border: 1px solid black
+
+.month
+  height: 100px
+
+$list: year,month,day,hour
+@for $i from 1 through length($list)
+  .time-#{nth($list,$i)}
+    background-position: 0 -10px*$i
+
+$List: YEAR,DATA,STATE,USER
+@for $var from 1 through length($List)
+  .DIV-#{nth($List,$var)}
+    $width: 100px
+    width: $width
+    height: 100px
+    border: 1px solid black
+    background-position: 0 -10px*$var
+
+.DIV-YEAR
+  &:hover
+    width: 40px
+    height: 40px
+    border: 1px solid black
+
+@mixin set($nav-color)
+  color: $nav-color
+  border: 1px solid pink
+  a
+    color: darken($nav-color,20%)
+
+.set-border
+  @include set($nav-color)
+
+.se-other
+  @extend .set-border
+  // type-of(5)
+
+$color: white
+@mixin setcolor($color: pink)
+  background-color: $color
+
+  border: 1px solid $color
+
+.set-color
+  @include setcolor
+  color: $color

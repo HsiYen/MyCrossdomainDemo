@@ -17,12 +17,10 @@
     $.ajax({
         method: 'GET',
         url: 'http://localhost:6060/queryInfo',
-        datatype: 'jsonp',
-        jsonp: 'cb',
-        // jsonpCallback: 'fn',
-        // success: function(json) {
-        //     console.log(json);
-        // },
+        datatype: 'json',
+      success: function(json) {
+        console.log(json);
+      },
         error: function(err) {
             console.log(err);
         }
@@ -30,7 +28,10 @@
 </script> -->
 <script src="./js/jsonp2.js"></script>
 <script>
-    jsonp('http://127.0.0.1:6060/queryInfo').then(result => {
+    jsonp('http://127.0.0.1:6060/queryInfo', {
+        jsonp: 'cb',
+        jsonpCallback: 'fn'
+    }).then(result => {
         console.log(result);
     });
 </script>
