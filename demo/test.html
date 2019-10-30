@@ -21,7 +21,59 @@
     <div class="div"></div>
     <div class="div"></div>
     <div class="div"></div>
+    <div class="div2">
+        <p>
+            中国1
+        </p>
+        <p>中国2</p>
+    </div>
+    <input type="text" id="dollar">
 </div>
+<script src="./js/jquery.js"></script>
 <script>
-  
+    $('.div2').click(function() {
+        $('p').prepend('<b>hello</b>')
+    });
+    $(function() {
+        $('#dollar').on('keyup', function() {
+            var a = $('#dollar').val();
+
+            var b = TripartiteMethod(a);
+            $(this).val(b);
+        })
+
+        function TripartiteMethod(num) {
+
+            var type = true;
+            var value = '';
+            num = num.replace(/,/g, "");
+
+            if (num.indexOf(".") < 0) {
+                var t1 = num.toString().split('');
+
+            } else {
+                type = false;
+                var arr = num.toString().split('.');
+                var t1 = arr[0].toString().split('');
+                var t2 = arr[1].toString();
+            }
+
+            var result = [],
+                counter = 0;
+            for (var i = t1.length - 1; i >= 0; i--) {
+                counter++;
+                result.unshift(t1[i]);
+                if ((counter % 3) == 0 && i != 0) {
+                    result.unshift(',');
+                }
+            }
+
+            if (type === true) {
+                value = result.join('');
+            } else {
+                value = result.join('') + '.' + t2;
+            }
+            return value;
+        }
+    })
 </script>
