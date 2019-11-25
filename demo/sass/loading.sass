@@ -1,0 +1,61 @@
+@for $i  from 1 through 8
+  .loadEffect span:nth-child(#{$i})
+    $time: ($i - 1)*0.13 + 0.13
+    animation-delay: #{$time}s
+
+@mixin set($boolean:true)
+  @if $boolean
+
+$sapce: 14px
+
+.loadEffect
+  width: 100px
+  height: 100px
+  position: relative
+  margin: 0 auto
+  margin-top: 100px
+  & span
+    display: inline-block
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    background: lightgreen
+    position: absolute
+    animation: load 1.04s ease infinite
+    &:nth-child(1)
+      left: 0
+      top: 50%
+      right: 0
+      margin-top: -10px
+    &:nth-child(2)
+      left: 14px
+      top: 14px
+    &:nth-child(3)
+      left: 50%
+      top: 0
+      margin-left: -10px
+    &:nth-child(4)
+      top: $sapce
+      right: $sapce
+    &:nth-child(5)
+      right: 0
+      top: 50%
+      margin-top: -10px
+    &:nth-child(6)
+      right: $sapce
+      bottom: $sapce
+    &:nth-child(7)
+      bottom: 0
+      left: 50%
+      margin-left: -10px
+    &:nth-child(8)
+      bottom: $sapce
+      left: $sapce
+@keyframes load
+  0%
+    transform: scale(1.2)
+    opacity: 1
+
+  100%
+    transform: scale(.3)
+    opacity: 0.5

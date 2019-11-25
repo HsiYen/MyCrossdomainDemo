@@ -1,0 +1,240 @@
+<head></head>
+<style>
+    .container {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+        position: relative;
+        perspective: 300px;
+        perspective-origin: 50% 40%;
+        /* border: 1px solid black; */
+    }
+    
+    .side {
+        position: absolute;
+        left: 140px;
+        top: 50px;
+        width: 0;
+        height: 0;
+        border-left: 60px solid transparent;
+        border-right: 60px solid transparent;
+        border-bottom: 120px solid #ccc;
+        transform-origin: 50% 0%;
+        /* animation: spin 5s infinite linear; */
+    }
+    
+    .kk {
+        position: absolute;
+        left: 110px;
+        top: 175px;
+        height: 0;
+        width: 120px;
+        border-bottom: 60px solid #ccc;
+        border-right: 30px solid transparent;
+        border-left: 30px solid transparent;
+    }
+    
+    .mm {
+        position: relative;
+        left: 90px;
+        top: 250px;
+        height: 0;
+        width: 100px;
+        border-bottom: 60px solid rgb(35, 154, 184);
+        border-right: 60px solid transparent;
+        /* position: absolute; */
+        /* border-left: 20px solid transparent; */
+    }
+    
+    .mm::after {
+        content: "";
+        width: 160px;
+        top: 60px;
+        position: absolute;
+        border-bottom: 30px solid rgb(35, 154, 184);
+    }
+    
+    .nn {
+        position: relative;
+        left: 260px;
+        top: 190px;
+        height: 0;
+        width: 100px;
+        border-bottom: 60px solid rgb(35, 154, 184);
+        border-left: 60px solid transparent;
+    }
+    
+    .nn::after {
+        content: "";
+        width: 160px;
+        top: 60px;
+        right: 0px;
+        position: absolute;
+        border-bottom: 30px solid rgb(35, 154, 184);
+    }
+    
+    .tran {
+        transform: rotateX(180deg)
+    }
+    
+    .hh {
+        position: relative;
+        width: 0;
+        left: 195px;
+        top: 340px;
+        border-bottom: 60px solid rgb(35, 154, 184);
+        border-left: 60px solid transparent;
+        border-right: 60px solid transparent;
+    }
+    
+    .hh::after {
+        content: "";
+        width: 0;
+        top: 60px;
+        right: -60px;
+        position: absolute;
+        border-bottom: 60px solid rgb(35, 154, 184);
+        border-left: 60px solid transparent;
+        border-right: 60px solid transparent;
+        transform: rotateX(180deg)
+    }
+    /* .hh::before {
+        content: "预警";
+    } */
+    /*     
+    .back {
+        animation-delay: -2.5s;
+    } */
+    
+    .right {
+        transform: rotateY(60deg) rotateX(30deg);
+        border-bottom-color: #00a2e6;
+        opacity: 0.8;
+    }
+    
+    .left {
+        transform: rotateY(330deg) rotateX(30deg);
+        border-bottom-color: #1abcff;
+        /* animation-delay: -3.75s; */
+    }
+    
+    .left2 {
+        transform: rotateY(330deg) rotateX(30deg) rotateZ(0deg);
+        /* transform-origin: 60% -280%; */
+        border-bottom-color: #1aff94;
+        transform-origin: 50% -195%;
+        /* border-bottom-color: #1abcff; */
+        /* animation-delay: -3.75s; */
+    }
+    
+    .right2 {
+        transform: rotateY(60deg) rotateX(30deg);
+        transform-origin: 50% -200%;
+        border-bottom-color: #00e632;
+        opacity: 0.8;
+    }
+    
+    .left3 {
+        transform: rotateY(330deg) rotateX(30deg) rotateZ(0deg);
+        /* transform-origin: 60% -280%; */
+        border-bottom-color: #1abcff;
+        transform-origin: 50% -195%;
+        /* border-bottom-color: #1abcff; */
+        /* animation-delay: -3.75s; */
+    }
+    
+    .right3 {
+        transform: rotateY(60deg) rotateX(30deg);
+        transform-origin: 50% -200%;
+        border-bottom-color: #00a2e6;
+        opacity: 0.8;
+    }
+    /* @keyframes spin {
+        0% {
+            transform: rotateY(0deg) rotateX(30deg);
+            border-bottom-color: #1abcff;
+        }
+        25% {
+            transform: rotateY(90deg) rotateX(30deg);
+            border-bottom-color: #00a2e6;
+            opacity: 1;
+        }
+        25.1% {
+            opacity: 0;
+        }
+        50% {
+            transform: rotateY(180deg) rotateX(30deg);
+            border-bottom-color: #0089c2;
+        }
+        74.9% {
+            opacity: 0;
+        }
+        75% {
+            transform: rotateY(270deg) rotateX(30deg);
+            border-bottom-color: #007eb3;
+            opacity: 1;
+        }
+        100% {
+            transform: rotateY(360deg) rotateX(30deg);
+            border-bottom-color: #1abcff;
+        }
+    } */
+    
+    .shadow1 {
+        position: absolute;
+        top: 131px;
+        left: 170px;
+        width: 50px;
+        height: 50px;
+        background-color: #bbb;
+        box-shadow: 0 0 40px 40px #bbb;
+        transform: rotateX(90deg) rotateZ(-70deg);
+        /* animation: shadow 5s infinite linear; */
+    }
+    
+    .shadow2 {
+        position: absolute;
+        top: 300px;
+        left: 145px;
+        width: 100px;
+        height: 100px;
+        background-color: #bbb;
+        box-shadow: 0 0 40px 40px #bbb;
+        transform: rotateX(90deg) rotateZ(-60deg);
+        /* animation: shadow 5s infinite linear; */
+    }
+    /*     
+    @keyframes shadow {
+        from {
+            transform: rotateX(90deg) rotateZ(0deg);
+        }
+        to {
+            transform: rotateX(90deg) rotateZ(-360deg);
+        }
+    } */
+</style>
+
+<body>
+    <div class="container">
+        <div class="side left"></div>
+        <!-- <div class="side front"></div> -->
+        <div class="side right"></div>
+        <!-- <div class="shadow1"></div> -->
+        <div class="kk left2"></div>
+        <div class="kk right2"></div>
+
+
+        <!--阴影-->
+        <div class="shadow2"></div>
+
+        <!-- <div class="mm"></div> -->
+        <!-- <div class="nn"></div> -->
+        <div class="hh"></div>
+        <div class="mm tran"></div>
+        <div class="nn tran"></div>
+
+        <div class="mm"></div>
+        <div class="nn"></div>
+
+    </div>
+</body>
